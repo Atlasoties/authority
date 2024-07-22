@@ -1,12 +1,12 @@
 # Authority
 
-![Build Status](https://github.com/harranali/authority/actions/workflows/build-main.yml/badge.svg)
-![Test Status](https://github.com/harranali/authority/actions/workflows/test-main.yml/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/harranali/authority)](https://goreportcard.com/report/github.com/harranali/authority)
-[![GoDoc](https://godoc.org/github.com/harranali/authority?status.svg)](https://godoc.org/github.com/harranali/authority)
-[![Coverage Status](https://coveralls.io/repos/github/harranali/authority/badge.svg?branch=main)](https://coveralls.io/github/harranali/authority?branch=main&cache=false)
+![Build Status](https://github.com/atlasoties/authority/actions/workflows/build-main.yml/badge.svg)
+![Test Status](https://github.com/atlasoties/authority/actions/workflows/test-main.yml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/atlasoties/authority)](https://goreportcard.com/report/github.com/atlasoties/authority)
+[![GoDoc](https://godoc.org/github.com/atlasoties/authority?status.svg)](https://godoc.org/github.com/harranali/authority)
+[![Coverage Status](https://coveralls.io/repos/github/atlasoties/authority/badge.svg?branch=main)](https://coveralls.io/github/atlasoties/authority?branch=main&cache=false)
 
-Role Based Access Control (RBAC) Go package with database persistence 
+Role Based Access Control (RBAC) Go package with database persistence
 # Features
 - Database Transactions
 - Create Roles
@@ -32,8 +32,8 @@ go get github.com/harranali/authority
 ```
 2. `Authority` uses the `orm` [gorm](https://gorm.io) to communicate with the database. [gorm](https://gorm.io) needs a database driver in order to work properly. you can install the database driver by runnig a command from the list below, for example if you are using `mysql` database, simply run `go get gorm.io/driver/mysql` and so.
 ```bash
-# mysql 
-go get gorm.io/driver/mysql 
+# mysql
+go get gorm.io/driver/mysql
 # or postgres
 go get gorm.io/driver/postgres
 # or sqlite
@@ -179,12 +179,12 @@ it returns an error in case of any
 it returns an error in case the role does not exists
 it returns an error in case the role is already assigned
 ```go
-// assign a role to user (user id) 
+// assign a role to user (user id)
 err = auth.AssignRoleToUser(1, "role-a")
 ```
 
 
-### func (a *Authority) CheckUserRole(userID interface{}, roleSlug string) (bool, error) 
+### func (a *Authority) CheckUserRole(userID interface{}, roleSlug string) (bool, error)
 Checks if a role is assigned to a user
 it accepts the user id as the first parameter
 the second parameter the role slug
@@ -206,7 +206,7 @@ the first parameter of the return is a boolean represents whether the role is as
 the second is an error in case of any
 in case the role does not exists, an error is returned
 ```go
-// check if a user have a given permission 
+// check if a user have a given permission
 ok, err := auth.CheckUserPermission(1, "permission-d")
 ```
 
@@ -224,7 +224,7 @@ in case the permission does not exists, an error is returned
 ok, err := auth.CheckRolePermission("role-a", "permission-a")
 ```
 
-### func (a *Authority) RevokeUserRole(userID interface{}, roleSlug string) error 
+### func (a *Authority) RevokeUserRole(userID interface{}, roleSlug string) error
 Revokes a user's role
 it returns a error in case of any
 in case the role does not exists, an error is returned
@@ -232,7 +232,7 @@ in case the role does not exists, an error is returned
 err = auth.RevokeUserRole(1, "role-a")
 ```
 
-### func (a *Authority) RevokeRolePermission(roleSlug string, permSlug string) error 
+### func (a *Authority) RevokeRolePermission(roleSlug string, permSlug string) error
 Revokes a roles's permission
 it returns a error in case of any
 in case the role does not exists, an error is returned
@@ -248,14 +248,14 @@ it returns an error in case of any
 roles, err := auth.GetAllRoles()
 ```
 
-### func (a *Authority) GetUserRoles(userID interface{}) ([]Role, error) 
+### func (a *Authority) GetUserRoles(userID interface{}) ([]Role, error)
 Returns all user assigned roles
 it returns an error in case of any
 ```go
 roles, err := auth.GetUserRoles(1)
 ```
 
-### func (a *Authority) GetRolePermissions(roleSlug string) ([]Permission, error) 
+### func (a *Authority) GetRolePermissions(roleSlug string) ([]Permission, error)
 Returns all role assigned permissions
 it returns an error in case of any
 ```go
@@ -269,7 +269,7 @@ it returns an error in case of any
 permissions, err := auth.GetAllPermissions()
 ```
 
-### func (a *Authority) DeleteRole(roleSlug string) error 
+### func (a *Authority) DeleteRole(roleSlug string) error
 Deletes a given role even if it's has assigned permissions
 it first deassign the permissions and then proceed with deleting the role
 it accepts the role slug as a parameter
