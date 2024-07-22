@@ -2,9 +2,10 @@ package authority
 
 // The database model of a role
 type Role struct {
-	ID   uint   // The role id (it gets set automatically by the database)
-	Name string // The name of the role
-	Slug string // String based unique identifier of the role, (use hyphen seperated role name '-', instead of space)
+	ID          uint   // The role id (it gets set automatically by the database)
+	Name        string // The name of the role
+	Slug        string // String based unique identifier of the role, (use hyphen seperated role name '-', instead of space)
+	Description string //
 }
 
 // TableName sets the table name

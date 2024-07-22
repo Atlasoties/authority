@@ -28,9 +28,11 @@ var (
 
 var tablePrefix string
 
-var auth *Authority
-var options Options
-var tx *gorm.DB
+var (
+	auth    *Authority
+	options Options
+	tx      *gorm.DB
+)
 
 // New initiates authority
 func New(opts Options) *Authority {
@@ -237,7 +239,7 @@ func (a *Authority) CheckUserPermission(userID interface{}, permSlug string) (bo
 		return false, res.Error
 	}
 
-	//prepare an array of role ids
+	// prepare an array of role ids
 	var roleIDs []interface{}
 	for _, r := range userRoles {
 		roleIDs = append(roleIDs, r.RoleID)
